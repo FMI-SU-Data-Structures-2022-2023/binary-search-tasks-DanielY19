@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void clean(Node*& n) {
+void clean(Node *&n) {
     if (n == nullptr) return;
     clean(n->left);
     clean(n->right);
@@ -12,7 +12,7 @@ void clean(Node*& n) {
 
 TEST_CASE("Validate isContains") {
 
-    Node* test = new Node(100);
+    Node *test = new Node(100);
     test->left = new Node(50);
     test->right = new Node(140);
     test->left->left = new Node(25);
@@ -20,13 +20,13 @@ TEST_CASE("Validate isContains") {
     CHECK(isContains(test, 140) == true);
     CHECK(isContains(test, 25) == true);
     CHECK(isContains(test, 0) == false);
-    CHECK(isContains(test,  150) == false);
+    CHECK(isContains(test, 150) == false);
     clean(test);
 }
 
 TEST_CASE("Validate getMin") {
 
-    Node* test = new Node(100);
+    Node *test = new Node(100);
     test->left = new Node(50);
     test->right = new Node(140);
     test->left->left = new Node(25);
@@ -40,7 +40,7 @@ TEST_CASE("Validate getMin") {
 
 TEST_CASE("Validate getMax") {
 
-    Node* test = new Node(100);
+    Node *test = new Node(100);
     test->left = new Node(50);
     test->right = new Node(140);
     test->left->left = new Node(25);
@@ -51,9 +51,10 @@ TEST_CASE("Validate getMax") {
     clean(test);
 }
 
+
 TEST_CASE("Validate LCA") {
 
-    Node* test = new Node(100);
+    Node *test = new Node(100);
     test = insert(test, 150);
     test = insert(test, 50);
     test = insert(test, 15);
@@ -70,7 +71,7 @@ TEST_CASE("Validate LCA") {
 
 TEST_CASE("Validate insert") {
 
-    Node* test = new Node(100);
+    Node *test = new Node(100);
     test->left = new Node(50);
     test->right = new Node(140);
     test->left->left = new Node(25);
@@ -84,7 +85,7 @@ TEST_CASE("Validate insert") {
 
 TEST_CASE("Validate remove") {
 
-    Node* test = new Node(100);
+    Node *test = new Node(100);
     test->left = new Node(50);
     test->right = new Node(140);
     test->left->left = new Node(25);
@@ -94,6 +95,25 @@ TEST_CASE("Validate remove") {
     CHECK(test->key == 140);
     CHECK(test->right == nullptr);
 
+
+    clean(test);
+}
+
+TEST_CASE("Validate removal of greaterElement") {
+
+    Node *test = new Node(100);
+    test = insert(test, 150);
+    test = insert(test, 50);
+    test = insert(test, 15);
+    test = insert(test, 12);
+    test = insert(test, 200);
+
+    test = removeGreaterThanX(test, 49);
+
+
+    CHECK(test->key == 15);
+    CHECK(test->left->key == 12);
+    CHECK(test->right == nullptr);
 
     clean(test);
 }
