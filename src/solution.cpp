@@ -1,6 +1,7 @@
 #include "solution.h"
 
 #include <vector>
+#include <cmath>
 
 bool isContains(const Node *node, int key) {
     if (!node)
@@ -127,10 +128,10 @@ std::vector<int> intersectionHelper(const Node *l, const Node *r) {
     std::vector<int> left(toArray(l));
     std::vector<int> right(toArray(r));
 
-    size_t size = std::min(left.size(), right.size());
+    std::size_t size = std::min(left.size(), right.size());
 
-    size_t leftIt = 0;
-    size_t rightIt = 0;
+    std::size_t leftIt = 0;
+    std::size_t rightIt = 0;
 
     std::vector<int> inter;
 
@@ -149,7 +150,7 @@ std::vector<int> intersectionHelper(const Node *l, const Node *r) {
 
 Node *section(const Node *l, const Node *r) {
     std::vector<int> intersection(intersectionHelper(l, r));
-    size_t size = intersection.size();
+    std::size_t size = intersection.size();
 
     if (!size)
         return nullptr;
@@ -162,7 +163,7 @@ Node *section(const Node *l, const Node *r) {
     return tree;
 }
 
-size_t level(const Node *tree, int key) {
+std::size_t level(const Node *tree, int key) {
     if (tree->key == key)
         return 1;
     else if (tree->key > key)
