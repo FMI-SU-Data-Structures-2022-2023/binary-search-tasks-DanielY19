@@ -3,7 +3,7 @@
     {
       "name": "Test",
       "setup": "",
-      "run": "cmake -S ./ -B ./cmake-build-debug && cmake --build ./cmake-build-debug --target testing && ./cmake-build-debug/testing",
+      "run": "cmake -S ./ -B ./cmake-build-debug && cmake --build ./cmake-build-debug --target unit-tests && ./cmake-build-debug/unit-tests",
       "input": "",
       "output": "",
       "comparison": "included",
